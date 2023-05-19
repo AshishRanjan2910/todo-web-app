@@ -3,12 +3,15 @@ package com.todoproject.springboot.todowebapp.todo;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("name")
 public class TodoController {
     private TodoService todoService;
 
@@ -27,16 +30,16 @@ public class TodoController {
     @RequestMapping(value="add-todo", method = RequestMethod.GET)
     public String addTodo(ModelMap model) {
         String username = (String)model.get("name");
-        Todo newTodo = new Todo(0, username, "",
+        Todo todo = new Todo(0, username, "",
                 LocalDate.now().plusYears(1), false);
-        model.addAttribute("newTodo", newTodo);
+        model.addAttribute("todo", todo);
         return "todo";
     }
 
     @RequestMapping(value="add-todo", method = RequestMethod.POST)
-    public String addTodo(ModelMap model, Todo newTodo) {
+    public String addTodo(ModelMap model, Todo todo) {
         String username = (String)model.get("name");
-        todoService.add(username, newTodo.getDescription(),
+        todoService.add(username, todo.getDescription(),
                 LocalDate.now().plusYears(1), false);
         return "redirect:todos";
     }

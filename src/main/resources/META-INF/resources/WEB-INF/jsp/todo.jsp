@@ -7,8 +7,8 @@
 <body>
     <div class="container">
         <h1>Enter Todo Details</h1>
-        <%--@elvariable id="newTodo" type=""--%>
-        <form:form method="POST" modelAttribute="newTodo">
+        <%--@elvariable id="todo" type=""--%>
+        <form:form method="POST" modelAttribute="todo">
             Description: <form:input type="text" path="description"
                                      required="required"/>
             <form:input type="hidden" path="id"/>
