@@ -6,7 +6,6 @@ import java.time.LocalDate;
 //Static List of todos => Database (H2, MySQL)
 import jakarta.validation.constraints.Size;
 
-@Size(min=10, message="Enter atleast 10 characters")
 public class Todo {
 
     public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
@@ -20,6 +19,7 @@ public class Todo {
 
     private int id;
     private String username;
+    @Size(min=10, message="Enter atleast 10 characters")
     private String description;
     private LocalDate targetDate;
     private boolean done;
