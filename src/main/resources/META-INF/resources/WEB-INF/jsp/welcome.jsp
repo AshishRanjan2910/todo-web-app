@@ -1,11 +1,7 @@
-<html>
-<head>
-    <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-    <title> Welcome Page</title>
-</head>
-    <body>
-        <div class="container">Welcome to Home page! ${name}.</div>
-        <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-        <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-    </body>
-</html>
+<%@ include file="components/header.jspf" %>
+<%@ include file="components/navbar.jspf" %>
+<div class="container">
+    <h1>Hooray! You are now set to log your all Todos...</h1>
+    <a href="todos">Manage</a> your todos
+</div>
+<%@ include file="components/footer.jspf" %>

@@ -3,10 +3,13 @@ package com.todoproject.springboot.todowebapp.todo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
-@Service
+//Commenting "@Service" for getting no attention from spring boot
+// shifting the logic to data-jpa inbuilt logic (db used: mysql)
+//@Service
 public class TodoService {
     private static List<Todo> todos = new ArrayList<>();
     private static int todosCount = 0;
@@ -25,7 +28,8 @@ public class TodoService {
     }
 
     public List<Todo> findByUsername(String username){
-        return todos;
+        Predicate<? super Todo> predicate =
+                todo -> todo.getUsername().equalsIgnoreCase(username);
+        return todos.stream().filter(predicate).toList();
     }
-
 }
